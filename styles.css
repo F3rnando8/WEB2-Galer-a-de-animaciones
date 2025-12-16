@@ -1,0 +1,102 @@
+/* --- BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    background: #080812; 
+    color: white; 
+    overflow-x: hidden; 
+}
+
+/* Contenedor: Centra todo el contenido y da margen lateral en móvil */
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    width: 100%;
+    padding: 0 1.5rem; 
+}
+
+.section { padding: 3rem 0; }
+
+/* Header y Textos Responsivos */
+.hero { text-align: center; }
+.gradient-text { 
+    font-size: clamp(2.2rem, 8vw, 4rem); 
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #764ba2); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    margin-bottom: 1rem;
+}
+.hero-subtitle { color: #a0a0b0; font-size: 1.1rem; }
+
+/* Grid Optimizado: Centra tarjetas y elimina huecos asimétricos */
+.cards-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2.5rem; 
+    justify-content: center; 
+    justify-items: center; /* Centra el contenido dentro de cada celda */
+}
+
+/* Tarjetas (Gallery Item) */
+.gallery-item {
+    opacity: 0;
+    width: 100%;
+    max-width: 380px; /* Limita el ancho para que no se estiren demasiado */
+    height: 450px;
+    background: #161625;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.gallery-item.visible {
+    animation: fadeInSlideUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efectos Hover */
+.gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.gallery-item:hover img { transform: scale(1.1) rotate(2deg); }
+
+/* Delays Secuenciales */
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.3s; }
+.gallery-item:nth-child(3) { animation-delay: 0.5s; }
+
+/* Detalles de Interfaz */
+.card-content { 
+    position: absolute; bottom: 0; padding: 2rem; width: 100%; 
+    background: linear-gradient(transparent, rgba(0,0,0,0.95)); 
+}
+.badge { background: #ff3e81; color: white; padding: 5px 12px; border-radius: 50px; font-weight: bold; font-size: 0.7rem; margin-bottom: 10px; display: inline-block; }
+
+.glitch { 
+    font-size: clamp(2.5rem, 10vw, 5rem); 
+    text-align: center; 
+    color: #00f2fe; 
+    margin-bottom: 2rem;
+}
+
+/* Botones con Wrap para móviles */
+.buttons-grid { 
+    display: flex; 
+    gap: 1.5rem; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+}
+.btn { padding: 1.2rem 2.5rem; border-radius: 50px; border: none; cursor: pointer; font-weight: bold; background: #4facfe; color: white; transition: 0.3s; }
+.btn-glow:hover { box-shadow: 0 0 30px #4facfe; transform: scale(1.05); }
+.btn-bounce:hover { animation: bounce 0.6s infinite; }
+
+@keyframes bounce { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-15px); } 
+}
